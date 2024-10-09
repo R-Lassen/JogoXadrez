@@ -15,6 +15,7 @@ namespace xadrez_console
             Console.WriteLine("TABULEIRO");
             Console.WriteLine();
 
+            //Tabuleiro: 
 
             for (int i=0; i<tab.linhas; i++)
             {
