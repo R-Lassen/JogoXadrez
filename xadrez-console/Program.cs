@@ -13,14 +13,13 @@ namespace xadrez_console
     {
         static void Main(string[] args)
         {
-
+            /*
             try
             {
-
                 Tabuleiro tab = new Tabuleiro(8, 8);
 
                 tab.colocarPeca(new Torre(tab, Cor.Azul), new Posicao(0, 0));
-                tab.colocarPeca(new Rei(tab, Cor.Azul), new Posicao(0, 9));
+                tab.colocarPeca(new Rei(tab, Cor.Azul), new Posicao(0, 2));
 
                 Tela.imprimirTabuleiro(tab);
 
@@ -29,7 +28,14 @@ namespace xadrez_console
             catch (TabuleiroException e)
             {
                 Console.WriteLine(e.Message);
-            }
+            }/*/
+
+            PosicaoXadrez pos = new PosicaoXadrez('a', 1);
+
+            Console.WriteLine(pos);
+
+            Console.WriteLine(pos.ToPosicao().ToString());
+
             Console.ReadLine();
         }
     }
