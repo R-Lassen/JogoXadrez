@@ -16,29 +16,35 @@ namespace xadrez_console
             
             try
             {
-                Tabuleiro tab = new Tabuleiro(8, 8);
+                PartidaDeXadrez partida = new PartidaDeXadrez();   
+                
+                while (!partida.terminada)
+                {
 
-                tab.colocarPeca(new Torre(tab, Cor.Preto), new Posicao(0, 0));
-                tab.colocarPeca(new Rei(tab, Cor.Preto), new Posicao(1, 3));
+                    Console.Clear();
 
-                tab.colocarPeca(new Rei(tab, Cor.Branca), new Posicao(0, 2));
-                tab.colocarPeca(new Rei(tab, Cor.Branca), new Posicao(3, 5));
+                    Tela.imprimirTabuleiro(partida.tab);
 
-                Tela.imprimirTabuleiro(tab);
+                    Console.WriteLine();
+                    Console.Write("Origem: ");
+                    Posicao origem = Tela.lerPosicaoXadrez().ToPosicao();
 
-                Console.Read();
+                    Console.Write("Destino: ");
+                    Posicao destino = Tela.lerPosicaoXadrez().ToPosicao();
+
+                    partida.executaMovimento(origem, destino); 
+
+
+
+                }
+   
             }
             catch (TabuleiroException e)
             {
                 Console.WriteLine(e.Message);
             }
 
-            PosicaoXadrez pos = new PosicaoXadrez('c', 7);
-
-            Console.WriteLine(pos);
-
-            Console.WriteLine(pos.ToPosicao().ToString());
-
+            Console.WriteLine("aa");
             Console.ReadLine();
         }
     }
