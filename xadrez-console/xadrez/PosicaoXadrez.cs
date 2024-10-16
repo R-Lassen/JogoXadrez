@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using tabuleiro;
-
+﻿using tabuleiro;
 
 namespace xadrez
 {
@@ -29,6 +23,6 @@ namespace xadrez
         {
             var s = "" + coluna.ToString() + linha.ToString();
             return ("" + coluna.ToString() + linha.ToString());
-          }
+        }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using xadrez_console.tabuleiro;
+﻿using xadrez_console.tabuleiro;
 
 namespace tabuleiro
 {
@@ -19,15 +14,11 @@ namespace tabuleiro
             this.linhas = linhas;
             this.colunas = colunas;
             pecas = new Peca [linhas, colunas];
-
         }
-
-
 
         public Peca peca (int linha, int coluna)
         {
             return pecas[linha, coluna];
-
         }
 
         public Peca peca (Posicao pos)
@@ -47,9 +38,7 @@ namespace tabuleiro
             // tratamento de excessao
             if (existePeca(pos)) { 
                 throw new TabuleiroException("Já existe uma peça nessa posição!");
-
             }
-
             pecas[pos.linha, pos.coluna] = p;
             p.posicao = pos;
         }
@@ -68,9 +57,9 @@ namespace tabuleiro
         }
 
         //testando se a posição é valida:
-        public bool posicaoValida(Posicao posicao)
+        public bool posicaoValida(Posicao pos)
         {
-            if (posicao.linha<0 || posicao.linha>=linhas || posicao.coluna<0 || posicao.coluna >= colunas)
+            if (pos.linha<0 || pos.linha>=linhas || pos.coluna<0 || pos.coluna >= colunas)
             {
                 return false;
 

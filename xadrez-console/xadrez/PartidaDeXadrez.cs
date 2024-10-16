@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using xadrez_console.tabuleiro;
+﻿using xadrez_console.tabuleiro;
 using tabuleiro;
 
 namespace xadrez
@@ -15,7 +10,6 @@ namespace xadrez
         private Cor jogadorAtual;
         public bool terminada {  get; private set; }
 
-
         public PartidaDeXadrez()
         {
             tab = new Tabuleiro(8, 8);
@@ -24,12 +18,12 @@ namespace xadrez
             terminada = false;
             colocarPecas();
         }
-        //
+        
         public void executaMovimento(Posicao origem, Posicao destino)
         {
             Peca p = tab.retirarPeca(origem);
             p.incrementarQteMovimentos();
-         //   Peca.pecaCapturada = tab.retirarPeca(destino);
+            Peca pecaCapturada = tab.retirarPeca(destino);
             tab.colocarPeca(p, destino);
 
         }
@@ -44,10 +38,8 @@ namespace xadrez
 
             tab.colocarPeca(new Torre(tab, Cor.Preto), new PosicaoXadrez('c', 7).ToPosicao());
             tab.colocarPeca(new Torre(tab, Cor.Preto), new PosicaoXadrez('c', 8).ToPosicao());
-            tab.colocarPeca(new Cavalo(tab, Cor.Preto), new PosicaoXadrez('d', 7).ToPosicao());
-            tab.colocarPeca(new Cavalo(tab, Cor.Preto), new PosicaoXadrez('e', 7).ToPosicao());
-           
-
+            tab.colocarPeca(new Torre(tab, Cor.Preto), new PosicaoXadrez('d', 7).ToPosicao());
+            tab.colocarPeca(new Rei(tab, Cor.Preto), new PosicaoXadrez('e', 7).ToPosicao());
         }
     }
 }
