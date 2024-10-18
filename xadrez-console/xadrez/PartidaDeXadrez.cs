@@ -12,6 +12,7 @@ namespace xadrez
         public bool terminada {  get; private set; }
         private HashSet<Peca> pecas;
         private HashSet<Peca> capturadas;
+        public bool xeque {  get; private set; }
 
         public PartidaDeXadrez()
         {
@@ -19,12 +20,13 @@ namespace xadrez
             turno = 1;
             jogadorAtual = Cor.Branca;
             terminada = false;
+            xeque = false;
             pecas = new HashSet<Peca>();
             capturadas = new HashSet<Peca>();
             colocarPecas();
         }
         
-        public void executaMovimento(Posicao origem, Posicao destino)
+        public Peca executaMovimento(Posicao origem, Posicao destino)
         {
             Peca p = tab.retirarPeca(origem);
             p.incrementarQteMovimentos();
@@ -33,14 +35,43 @@ namespace xadrez
             if (pecaCapturada != null)
             {
                 capturadas.Add(pecaCapturada);
-
             }
-
+            return pecaCapturada;
         }
 
+        //desfaz movimento
+        public void desfazMovimento(Posicao origem, Posicao destino, Peca pecaCaptutada)
+        {
+            Peca p = tab.retirarPeca(destino);
+            p.decrementarQteMovimentos();
+            if (pecaCaptutada != null)
+            {
+                tab.colocarPeca(pecaCaptutada, destino);
+                capturadas.Remove(pecaCaptutada);
+
+            }
+            tab.colocarPeca(p, origem);
+        }
+
+        //realizar jogada
         public void realizaJogada(Posicao origem, Posicao destino)
         {
-            executaMovimento(origem, destino);
+            Peca pecaCapturada = executaMovimento(origem, destino);
+
+            if (estaEmXeque(jogadorAtual))
+            {
+                desfazMovimento(origem, destino, pecaCapturada);
+                throw new TabuleiroException(" Voce não pode se colocar em xeque");
+            }
+            if (estaEmXeque(adversaria(jogadorAtual)))
+            {
+                xeque = true; //AAAAA
+            }
+            else
+            {
+                xeque = false; //AAAAA
+            }
+
             turno++;
             mudaJogador();
         }
@@ -109,6 +140,48 @@ namespace xadrez
             return aux;
         }
 
+        private Cor adversaria(Cor cor)
+        {
+            if (cor == Cor.Branca)
+            {
+                return Cor.Preto;
+            }
+            else
+            {
+                return Cor.Branca;
+            }
+        }
+
+        private Peca rei(Cor cor)
+        {
+            foreach(Peca x in pecasEmJogo(cor))
+            {
+                if (x is Rei)
+                {
+                    return x;
+                }
+            }
+            return null;
+        }
+        //rei esta em xeque
+        public bool estaEmXeque(Cor cor)
+        {
+            Peca R = rei(cor);
+            if (R == null)
+            {
+                throw new TabuleiroException("Não tem rei no tabuleiro da cor:" + cor);
+            }
+            foreach (Peca x in pecasEmJogo(adversaria(cor)))
+            {
+                bool[,] mat = x.movimentosPossiveis();
+                if (mat[R.posicao.linha, R.posicao.coluna]) 
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void colocarNovaPeca(char coluna, int linha, Peca peca)
         {
             tab.colocarPeca(peca, new PosicaoXadrez(coluna, linha).ToPosicao());
@@ -117,7 +190,7 @@ namespace xadrez
 
         private void colocarPecas()
         {
-            colocarNovaPeca('c', 1, new Torre(tab,Cor.Branca));
+         //   colocarNovaPeca('c', 1, new Torre(tab,Cor.Branca));
             colocarNovaPeca('c', 2, new Torre(tab, Cor.Branca));
             colocarNovaPeca('d', 2, new Torre(tab, Cor.Branca));
             colocarNovaPeca('e', 2, new Torre(tab, Cor.Branca));
