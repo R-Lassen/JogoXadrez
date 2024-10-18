@@ -227,13 +227,12 @@ namespace xadrez
         private void colocarPecas()
         {
            
-            colocarNovaPeca('c', 1, new Torre(tab, Cor.Branca));
+            colocarNovaPeca('c', 1, new Bispo(tab, Cor.Branca));
             colocarNovaPeca('d', 2, new Torre(tab, Cor.Branca));
             colocarNovaPeca('e', 2, new Torre(tab, Cor.Branca));
             colocarNovaPeca('h', 7, new Torre(tab, Cor.Branca));
             colocarNovaPeca('d', 1, new Rei(tab, Cor.Branca));
 
-            
             colocarNovaPeca('c', 8, new Torre(tab, Cor.Preto));
             colocarNovaPeca('d', 7, new Torre(tab, Cor.Preto));
             colocarNovaPeca('e', 7, new Torre(tab, Cor.Preto));
