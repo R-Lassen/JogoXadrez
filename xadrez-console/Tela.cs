@@ -5,6 +5,7 @@ using xadrez_console.tabuleiro;
 using xadrez;
 using System.Diagnostics;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 
 namespace xadrez_console
 {
@@ -19,10 +20,18 @@ namespace xadrez_console
             imprimirPecasCapturadas(partida);
             Console.WriteLine(); 
             Console.WriteLine("Turno: " + partida.turno);
-            Console.WriteLine("Aguarndando jogada da " + partida.jogadorAtual);
-            if (partida.xeque)
+            if (!partida.terminada)
             {
-                Console.WriteLine("XEQUE!");
+                Console.WriteLine("Aguarndando jogada da " + partida.jogadorAtual);
+                if (partida.xeque)
+                {
+                    Console.WriteLine("XEQUE!");
+                }
+            }
+            else {
+                Console.WriteLine("XEQUEMATE!");
+                Console.WriteLine("Vencedor: " + partida.jogadorAtual;
+
             }
         }
         //imprimir pecas capturadas
