@@ -4,7 +4,6 @@ using tabuleiro;
 using xadrez_console.tabuleiro;
 using xadrez;
 using System.Diagnostics;
-using System.Collections.Generic;
 using System.ComponentModel.Design;
 
 namespace xadrez_console
@@ -22,7 +21,7 @@ namespace xadrez_console
             Console.WriteLine("Turno: " + partida.turno);
             if (!partida.terminada)
             {
-                Console.WriteLine("Aguarndando jogada da " + partida.jogadorAtual);
+                Console.WriteLine("Aguarndando jogada " + partida.jogadorAtual);
                 if (partida.xeque)
                 {
                     Console.WriteLine("XEQUE!");

@@ -110,7 +110,7 @@ namespace xadrez
         {
             if(jogadorAtual == Cor.Branca)
             {
-                jogadorAtual = Cor.Preto;
+                jogadorAtual = Cor.Vermelha;
             }
             else
             {
@@ -149,7 +149,7 @@ namespace xadrez
         {
             if (cor == Cor.Branca)
             {
-                return Cor.Preto;
+                return Cor.Vermelha;
             }
             else
             {
@@ -234,15 +234,32 @@ namespace xadrez
             colocarNovaPeca('f', 1, new Bispo(tab, Cor.Branca));
             colocarNovaPeca('g', 1, new Cavalo(tab, Cor.Branca));
             colocarNovaPeca('h', 1, new Torre(tab, Cor.Branca));
+            colocarNovaPeca('a', 2, new Peao(tab, Cor.Branca));
+            colocarNovaPeca('b', 2, new Peao(tab, Cor.Branca));
+            colocarNovaPeca('c', 2, new Peao(tab, Cor.Branca));
+            colocarNovaPeca('d', 2, new Peao(tab, Cor.Branca));
+            colocarNovaPeca('e', 2, new Peao(tab, Cor.Branca));
+            colocarNovaPeca('f', 2, new Peao(tab, Cor.Branca));
+            colocarNovaPeca('g', 2, new Peao(tab, Cor.Branca));
+            colocarNovaPeca('h', 2, new Peao(tab, Cor.Branca));
 
-            colocarNovaPeca('a', 8, new Torre(tab, Cor.Preto));
-            colocarNovaPeca('b', 8, new Cavalo(tab, Cor.Preto));
-            colocarNovaPeca('c', 8, new Bispo(tab, Cor.Preto));
-            colocarNovaPeca('d', 8, new Dama (tab, Cor.Preto));
-            colocarNovaPeca('e', 8, new Rei(tab, Cor.Preto));
-            colocarNovaPeca('f', 8, new Bispo(tab, Cor.Preto));
-            colocarNovaPeca('g', 8, new Cavalo(tab, Cor.Preto));
-            colocarNovaPeca('h', 8, new Torre(tab, Cor.Preto));
+            colocarNovaPeca('a', 8, new Torre(tab, Cor.Vermelha));
+            colocarNovaPeca('b', 8, new Cavalo(tab, Cor.Vermelha));
+             colocarNovaPeca('c', 8, new Bispo(tab, Cor.Vermelha));
+             colocarNovaPeca('d', 8, new Dama (tab, Cor.Vermelha));
+             colocarNovaPeca('e', 8, new Rei(tab, Cor.Vermelha));
+             colocarNovaPeca('f', 8, new Bispo(tab, Cor.Vermelha));
+             colocarNovaPeca('g', 8, new Cavalo(tab, Cor.Vermelha));
+             colocarNovaPeca('h', 8, new Torre(tab, Cor.Vermelha));
+             colocarNovaPeca('a', 7, new Peao(tab, Cor.Vermelha));
+             colocarNovaPeca('b', 7, new Peao(tab, Cor.Vermelha));
+             colocarNovaPeca('c', 7, new Peao(tab, Cor.Vermelha));
+             colocarNovaPeca('d', 7, new Peao(tab, Cor.Vermelha));
+             colocarNovaPeca('e', 7, new Peao(tab, Cor.Vermelha));
+             colocarNovaPeca('f', 7, new Peao(tab, Cor.Vermelha));
+             colocarNovaPeca('g', 7, new Peao(tab, Cor.Vermelha));
+             colocarNovaPeca('h', 7, new Peao(tab, Cor.Vermelha));
+           
         }
     }
 }
