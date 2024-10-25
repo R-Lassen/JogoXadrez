@@ -46,7 +46,7 @@ namespace xadrez_console
             Console.Write("Vermelhas: ");
             ConsoleColor aux = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Red;
-            imprimirConjunto(partida.pecasCapturadas(Cor.Preto));
+            imprimirConjunto(partida.pecasCapturadas(Cor.Vermelha));
             Console.ForegroundColor = aux;
             Console.WriteLine();
         }
@@ -105,6 +105,7 @@ namespace xadrez_console
                     }
                     imprimirPeca(tab.peca(i, j));
                 }
+                
                 Console.WriteLine("|");
             }
             Console.WriteLine("  +-----------------+");
